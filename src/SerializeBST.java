@@ -1,4 +1,4 @@
-import javax.swing.tree.TreeNode;
+
 import java.util.*;
 
 /**
@@ -10,6 +10,16 @@ import java.util.*;
  * <p>
  * 注意：不要使用类成员/全局/静态变量来存储状态。 你的序列化和反序列化算法应该是无状态的。
  */
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode(int x) {
+        val = x;
+    }
+}
 
 public class SerializeBST {
 
@@ -24,10 +34,10 @@ public class SerializeBST {
 
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
-        if (str == null || str.length() <= 0) {
+        if (data == null || data.length() <= 0) {
             return null;
         }
-        String [] node = data.split("!");
+        String[] node = data.split("!");
         TreeNode root = this.deserializeCode(node);
 
         return root;
@@ -37,6 +47,7 @@ public class SerializeBST {
     private void preOrder(TreeNode root, StringBuilder str) {
         if (root == null) {
             str.append("#!");
+            return;
         }
 
         str.append(root.val + "!");
@@ -47,7 +58,7 @@ public class SerializeBST {
     }
 
     private TreeNode deserializeCode(String[] strs) {
-        if("#".equals(strs[index])) {
+        if ("#".equals(strs[index])) {
             index++;
             return null;
         } else {
@@ -63,4 +74,10 @@ public class SerializeBST {
             return newNode;
         }
     }
+
+    public static void main(String[] args) {
+        
+    }
+
 }
+
