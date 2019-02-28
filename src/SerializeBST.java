@@ -76,7 +76,7 @@ public class SerializeBST {
     }
 
     public static void main(String[] args) {
-        
+
     }
 
 }
