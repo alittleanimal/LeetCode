@@ -23,4 +23,37 @@ public class SortCollection {
             }
         }
     }
+
+    /**
+     * find the position of axis after the sort of number array
+     *
+     * @param numbers
+     * @param low
+     * @param high
+     * @return
+     */
+    public static int getMiddle(int[] numbers, int low, int high) {
+        int temp = numbers[low];
+
+        while (low < high) {
+            while (low < high && numbers[high] > temp) {
+                high--;
+            }
+            numbers[low] = numbers[high];
+            while (low < high && numbers[low] < temp) {
+                low++;
+            }
+            numbers[high] = numbers[low];
+        }
+        numbers[low] = temp;
+        return low;
+    }
+
+    public static void quickSort(int[] numbers, int low, int high) {
+        if (low < high) {
+            int middle = getMiddle(numbers, low, high);
+            quickSort(numbers, low, middle - 1);
+            quickSort(numbers, middle + 1, high);
+        }
+    }
 }
