@@ -51,7 +51,7 @@ public class CanVisitAllRooms {
         System.out.println(canVisitAllRooms(test));
     }
 
-    
+
 
     /**
      * Best answer
