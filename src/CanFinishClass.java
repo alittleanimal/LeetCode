@@ -20,7 +20,7 @@ import java.util.List;
  输出: false
  解释: 总共有 2 门课程。学习课程 1 之前，你需要先完成​课程 0；并且学习课程 0 之前，你还应先完成课程 1。这是不可能的。
  */
-public class canFinishClass {
+public class CanFinishClass {
 
     static boolean noCircle = true;
 
