@@ -13,7 +13,8 @@ public class MyArrayList<E> {
         if (initialCapacity < 0)
             throw new IllegalArgumentException("Illegal Capacity: " + initialCapacity);
 
-        this.elementData = new E[initialCapacity];
+        this.elementData = (E[]) new Object[initialCapacity];
+        this.size = 0;
     }
 
     public MyArrayList() {
@@ -36,9 +37,53 @@ public class MyArrayList<E> {
         return OldValue;
     }
 
+    public boolean add(E e) {
+        ensureCapacity(size + 1);
+        elementData[size++] = e;
+        return true;
+    }
+
+    public void add(int index, E element) {
+        if(index > size || index < 0) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+        ensureCapacity(size + 1);
+        System.arraycopy(elementData, index, elementData, index+1, size - index);
+        elementData[index] = element;
+        size++;
+    }
+
+    public void addAll(int index, Collection<? extends E> c) {
+        rangeCheck(index);
+
+        E[] newEs = (E[])c.toArray();
+        int newLength = newEs.length;
+        
+        ensureCapacity(size + newLength + 1);
+        int move = size - index;
+
+        if (move > 0) {
+            System.arraycopy(elementData, index, elementData, index+newLength, move);
+        }
+
+        System.arraycopy(newEs, 0, elementData, index, newLength);
+        size+=newLength;
+    }
+
+    public void addAll (Collection<? extends E> c) {
+        this.addAll(size, c);
+    }
+
     private void rangeCheck(int requestIndex) {
         if (requestIndex<0 || requestIndex > size) {
             throw new IndexOutOfBoundsException();
+        }
+    }
+
+    private void ensureCapacity (int newCapacity) {
+        int curr = elementData.length;
+        if (newCapacity > curr) {
+            elementData = Arrays.copyOf(elementData, newCapacity);
         }
     }
 }
