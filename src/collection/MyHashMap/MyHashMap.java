@@ -6,9 +6,8 @@ import java.util.Set;
 public class MyHashMap<K,V> implements MyMap {
 
     private final int DEFAULT_CAPACITY = 16;
-    Node[] table = new Node[DEFAULT_CAPACITY];
+    private Node[] table = new Node[DEFAULT_CAPACITY];
     private int size = 0;
-    Set<K> keySet;
 
     @Override
     public int size() {
@@ -49,7 +48,7 @@ public class MyHashMap<K,V> implements MyMap {
         return null;
     }
 
-    public void addEntry(Object key, Object value, int hashValue, int i) {
+    private void addEntry(Object key, Object value, int hashValue, int i) {
         if (++size == table.length) {
             Node[] newTable = new Node[table.length*2];
             System.arraycopy(table, 0, newTable, 0, table.length);
