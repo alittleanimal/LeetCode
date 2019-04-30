@@ -58,7 +58,7 @@ public class MyArrayList<E> {
 
         E[] newEs = (E[])c.toArray();
         int newLength = newEs.length;
-        
+
         ensureCapacity(size + newLength + 1);
         int move = size - index;
 
