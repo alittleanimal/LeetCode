@@ -2,6 +2,8 @@ package collection;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 public class MyArrayList<E> {
     private transient E[] elementData;
@@ -148,6 +150,7 @@ public class MyArrayList<E> {
 
         System.out.println(testMyArrayList.size);
         System.out.println(testMyArrayList.get(2));
+        Set<Integer> newSet = new HashSet<>();
 
     }
 }
