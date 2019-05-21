@@ -21,6 +21,7 @@ public class ShuffleArray {
 		int randomInt = 0;
 		int[] returnList = recordNums.clone();
 		for (int j = recordNums.length - 1; j > 0; j--) {
+			// random a Integer in [0,a)
 			randomInt = random.nextInt(j + 1);
 			temp = returnList[randomInt];
 			returnList[randomInt] = returnList[j];
