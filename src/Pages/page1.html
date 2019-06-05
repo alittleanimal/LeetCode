@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <style>
+            .wrap {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            .menu {
+                width: 200px;
+                float: left;
+                color: blue;
+                padding-top: 10px;
+                background: #000;
+            }
+            @media (max-width: 768px) {
+                .menu {
+                    float: none;
+                    width: 100%;
+                }
+                .content {
+                    margin-left: 0;
+                }
+            }
+            .menu li {
+                margin-bottom: 20px;
+                color: #fff;
+                background: #000;
+            }
+            .content {
+                margin-left: 210px;
+                background: orange;
+                color: #fff;
+            }
+            @media (max-width: 768px) {
+                .content {
+                    margin-left: 0;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="wrap">
+            <div class="menu">
+                <ul>
+                    <li>hello world 111</li>
+                    <li>hello world 222</li>
+                    <li>hello world 333</li>
+                </ul>
+            </div>
+            <div class="content">
+                content content
+            </div>
+        </div>    
+    </body>
+
+    <script>
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            this.study = function() {
+                console.log("study study study!");
+            }
+        }
+
+        Person.prototype.getName = function() {console.log(this.name);}
+        function Teacher(name, age, subject) {
+            Person.call(this, name, age);
+            this.subject = subject;
+        }
+        Teacher.prototype = Object.create(Person.prototype);
+        Teacher.prototype.constructor = Teacher;
+
+        let person = new Person("hello", "world");
+        person.getName();
+        person.study();
+
+        let teacher = new Teacher("name", "age", "subject");
+        teacher.getName();
+        teacher.study();
+    </script>
+</html>
