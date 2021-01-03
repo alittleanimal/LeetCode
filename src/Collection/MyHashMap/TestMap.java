@@ -1,4 +1,4 @@
-package collection.MyHashMap;
+package Collection.MyHashMap;
 
 public class TestMap {
     public static void main(String[] args) {

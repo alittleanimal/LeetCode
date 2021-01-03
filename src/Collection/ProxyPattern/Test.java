@@ -1,4 +1,4 @@
-package collection.ProxyPattern;
+package Collection.ProxyPattern;
 
 public class Test {
     public static void main(String[] args) {

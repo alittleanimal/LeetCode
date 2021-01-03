@@ -1,7 +1,5 @@
-package collection.MyHashMap;
+package Collection.MyHashMap;
 
-
-import java.util.Set;
 
 public class MyHashMap<K,V> implements MyMap {
 

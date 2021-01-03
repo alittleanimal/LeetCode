@@ -1,4 +1,4 @@
-package collection;
+package Collection;
 
 /**
  * https://www.cnblogs.com/dongyu666/p/6971783.html

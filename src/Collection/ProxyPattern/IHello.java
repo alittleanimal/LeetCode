@@ -1,4 +1,4 @@
-package collection.ProxyPattern;
+package Collection.ProxyPattern;
 
 public interface IHello {
     /**

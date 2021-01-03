@@ -1,4 +1,4 @@
-package collection.ProxyPattern;
+package Collection.ProxyPattern;
 
 public class Hello implements IHello {
     @Override

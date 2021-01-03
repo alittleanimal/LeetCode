@@ -1,4 +1,4 @@
-package collection.ProxyPattern;
+package Collection.ProxyPattern;
 
 public class ProxyHello implements IHello {
     private IHello hello;

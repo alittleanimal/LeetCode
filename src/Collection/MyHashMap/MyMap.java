@@ -1,4 +1,4 @@
-package collection.MyHashMap;
+package Collection.MyHashMap;
 
 public interface MyMap<K,V> {
     int size();

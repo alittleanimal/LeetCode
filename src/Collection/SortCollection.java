@@ -1,4 +1,4 @@
-package collection;
+package Collection;
 
 public class SortCollection {
 
@@ -21,6 +21,29 @@ public class SortCollection {
                     numbers[j] = temp;
                 }
             }
+        }
+    }
+
+    public static void bubbleSortImprovement(int[] numbers) {
+        int temp = 0;
+        boolean hasChange = false;
+        int lastChangeIndex = numbers.length - 1;
+        int tempChangeIndex = 0;
+
+        for (int i = 0; i < lastChangeIndex; i++) {
+            hasChange = false;
+            for (int j = 0; j < lastChangeIndex - i; j++) {
+                if (numbers[j] > numbers[j + 1]) {
+                    temp = numbers[i];
+                    numbers[i] = numbers[j];
+                    numbers[j] = temp;
+                    hasChange = true;
+//                    tempChangeIndex =
+                }
+            }
+
+            if (!hasChange)
+                break;
         }
     }
 
