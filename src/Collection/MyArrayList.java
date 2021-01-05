@@ -133,7 +133,7 @@ public class MyArrayList<E> {
     }
 
     public static void main(String[] args) {
-        MyArrayList<Integer> testMyArrayList = new MyArrayList<>();
+        MyArrayList<Integer> testMyArrayList = new MyArrayList<Integer>();
 
         System.out.println(testMyArrayList.size);
 
