@@ -3,6 +3,9 @@ package HKU2021;
 import java.util.Collections;
 import java.util.LinkedList;
 
+/**
+ * 239. Sliding Window Maximum
+ */
 public class MaxSlidingWindow {
     public int[] maxSlidingWindow(int[] nums, int k) {
         LinkedList<Integer> slidingList = new LinkedList<>();
