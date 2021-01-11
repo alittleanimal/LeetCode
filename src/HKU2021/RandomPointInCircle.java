@@ -14,6 +14,11 @@ public class RandomPointInCircle {
         this.y_center = y_center;
     }
 
+    /**
+     * 外接圆内随机取点
+     * 判断到圆心距离
+     * @return
+     */
     public double[] randPoint() {
         double[] randomPoint = getRandomPoint();
         double[] center = {x_center, y_center};
