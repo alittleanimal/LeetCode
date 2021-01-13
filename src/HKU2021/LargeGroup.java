@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * 830. Positions of Large Groups
  */
-public class Large_Group {
+public class LargeGroup {
     public List<List<Integer>> largeGroupPositions(String s) {
         LinkedList<Integer> recordList = new LinkedList<>();
         List<List<Integer>> resultList = new ArrayList<>();
@@ -63,7 +63,7 @@ public class Large_Group {
     }
 
     public static void main(String[] args) {
-        Large_Group largeGroup = new Large_Group();
+        LargeGroup largeGroup = new LargeGroup();
         List<List<Integer>> result = largeGroup.largeGroupPositionsBetterSol("abcdddeeeeaabbbcdddd");
         for (List item : result) {
             for (Object i : item) {
