@@ -2,6 +2,9 @@ package HKU2021;
 
 import org.junit.Test;
 
+/**
+ * 765. Couples Holding Hands
+ */
 public class CouplesHoldingHands765 {
     public int minSwapsCouples(int[] row) {
         int[] originalSeat = new int[row.length];
