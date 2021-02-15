@@ -1,6 +1,7 @@
 package Collection;
 
 public class UnionFindSet {
+    // 按轶合并
     private int[] parents;
     private int[] ranks;
 
@@ -34,5 +35,43 @@ public class UnionFindSet {
 
     public int Find(int u) {
         return parents[u] == u ? u : (parents[u] = Find(parents[u]));
+    }
+
+
+    private class UnionFind {
+        // 路径压缩
+        private int[] parent;
+        private int count; // 联通对数
+
+        public int getCount() {
+            return count;
+        }
+
+        public UnionFind(int n) {
+            this.count = n;
+            this.parent = new int[n];
+            for (int i = 0; i < n; i++) {
+                parent[i] = i;
+            }
+        }
+
+        public int find(int x) {
+            while (x != parent[x]) {
+                parent[x] = parent[parent[x]];
+                x = parent[x];
+            }
+            return x;
+        }
+
+        public void union(int x, int y) {
+            int rootX = find(x);
+            int rootY = find(y);
+
+            if (rootX == rootY) {
+                return;
+            }
+            parent[rootX] = rootY;
+            count --;
+        }
     }
 }
