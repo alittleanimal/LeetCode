@@ -1,4 +1,4 @@
-package HKU2021;
+package HKU2021.Tree;
 
 public class BalancedBinaryTree110 {
     public boolean isBalanced(TreeNode root) {

@@ -1,6 +1,6 @@
-package HKU2021;
+package HKU2021.Tree;
 
-public class MaximumDepthofBinaryTree104 {
+public class MaximumDepthOfBinaryTree104 {
     public int maxDepth(TreeNode root) {
         if (root == null)
             return 0;
