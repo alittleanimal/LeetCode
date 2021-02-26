@@ -1,4 +1,4 @@
-package HKU2021;
+package HKU2021.Tree;
 
 public class SwapNodesInPairs24 {
     public ListNode swapPairs(ListNode head) {
