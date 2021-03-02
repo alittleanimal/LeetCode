@@ -1,4 +1,4 @@
-package HKU2021;
+package HKU2021.March;
 
 /**
  * 303. Range Sum Query - Immutable
