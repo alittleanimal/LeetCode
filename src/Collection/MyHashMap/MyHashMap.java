@@ -49,7 +49,8 @@ public class MyHashMap<K,V> implements MyMap {
     private void addEntry(Object key, Object value, int hashValue, int i) {
         if (++size == table.length) {
             Node[] newTable = new Node[table.length*2];
-            System.arraycopy(table, 0, newTable, 0, table.length);
+//            System.arraycopy(table, 0, newTable, 0, table.length);
+            transfer(table, newTable);
             table = newTable;
         }
         Node eNode = table[i];
@@ -62,6 +63,23 @@ public class MyHashMap<K,V> implements MyMap {
 
     private int hash(Object key) {
         return key.hashCode();
+    }
+
+    public void transfer(Node[] src,Node[] newTable) {         //src引用了旧的Entry数组
+        int newCapacity = newTable.length;
+        for (int j = 0; j < src.length; j++) { //遍历旧的Entry数组
+            Node e = src[j];             //取得旧Entry数组的每个元素
+            if (e != null) {
+                src[j] = null;//释放旧Entry数组的对象引用（for循环后，旧的Entry数组不再引用任何对象）
+                do {
+                    Node next = e.next;
+                    int i = indexFor(e.hash, newCapacity); //！！重新计算每个元素在数组中的位置
+                    e.next = newTable[i]; //标记[1]
+                    newTable[i] = e;      //将元素放在数组上
+                    e = next;             //访问下一个Entry链上的元素
+                } while (e != null);
+            }
+        }
     }
 
     static class Node implements MyMap.Entry {

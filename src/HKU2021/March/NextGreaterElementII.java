@@ -53,4 +53,25 @@ public class NextGreaterElementII {
         }
         return res;
     }
+
+    public static void main(String[] args) {
+        System.out.println(findMax("abcddde"));
+    }
+
+    public static int findMax(String s) {
+        int[] record = new int[26]; // HashMap
+        int left = 0;
+        int max = 0;
+        for (int i =0; i < s.length(); i++) {
+            int index = s.charAt(i) - 'a';
+            while(record[index] != 0) {
+                max = Math.max(max, i - left);
+                record[s.charAt(left) - 'a']--;
+                left++;
+            }
+            record[index]++;
+        }
+
+        return Math.max(max, s.length() - left);
+    }
 }
