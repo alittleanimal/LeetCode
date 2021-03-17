@@ -45,7 +45,7 @@ public class SwimInRisingWater778 {
             }
         }
 
-        Collections.sort(recordList, (o1, o2) -> {
+        recordList.sort((o1, o2) -> {
             if (o1[2] > o2[2])
                 return 1;
             else if (o1[2] < o2[2])
@@ -83,10 +83,10 @@ public class SwimInRisingWater778 {
 
     @Test
     public void test778() {
-        System.out.println(swimInWater(new int[][]{{0, 1, 2, 3, 4}, {24, 23, 22, 21, 5},
-                {12, 13, 14, 15, 16}, {11, 17, 18, 19, 20}, {10, 9, 8, 7, 6}}));
+//        System.out.println(swimInWater(new int[][]{{0, 1, 2, 3, 4}, {24, 23, 22, 21, 5},
+//                {12, 13, 14, 15, 16}, {11, 17, 18, 19, 20}, {10, 9, 8, 7, 6}}));
 //        System.out.println(minimumEffortPathBetterSol(new int[][]{{3, 2}, {1, 0}}));
-
+        System.out.println(swimInWater(new int[][]{{1, 2, 4}, {1, 3, 1}, {1, 3, 1}}));
     }
 
     private static class UnionFind {

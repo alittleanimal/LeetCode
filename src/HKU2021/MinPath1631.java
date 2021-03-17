@@ -13,16 +13,16 @@ public class MinPath1631 {
         LinkedList<LinkedList<String>> recordList = new LinkedList<>();
 
         int size = heights.length;
-        recordList.add(new LinkedList<>(Arrays.asList(new String[]{"00"})));
+        recordList.add(new LinkedList<>(Arrays.asList("00")));
         String currentItem;
-        int tempInt = 0;
+        int tempInt;
         String tempStr;
         String endStr = (size - 1) + String.valueOf(size - 1);
         LinkedList<LinkedList<String>> resultList = new LinkedList<>();
         while (!recordList.isEmpty()) {
             LinkedList<String> currentList = recordList.removeFirst();
             currentItem = currentList.getLast();
-            tempInt = Integer.valueOf(currentItem.split("")[0]) + 1;
+            tempInt = Integer.parseInt(currentItem.split("")[0]) + 1;
             if (tempInt < size) {
                 LinkedList tempList = new LinkedList(currentList);
                 tempStr = String.valueOf(tempInt) + currentItem.charAt(1);
@@ -83,16 +83,13 @@ public class MinPath1631 {
             }
         }
 
-        Collections.sort(recordList, new Comparator<Integer[]>() {
-            @Override
-            public int compare(Integer[] o1, Integer[] o2) {
-                if (o1[2] > o2[2])
-                    return 1;
-                else if (o1[2] < o2[2])
-                    return -1;
+        recordList.sort((o1, o2) -> {
+            if (o1[2] > o2[2])
+                return 1;
+            else if (o1[2] < o2[2])
+                return -1;
 
-                return 0;
-            }
+            return 0;
         });
 
         UnionFind unionFind = new UnionFind(size);
@@ -114,7 +111,7 @@ public class MinPath1631 {
 
     @Test
     public void test1631() {
-        System.out.println(minimumEffortPathBetterSol(new int[][]{{1, 10, 6, 7, 9, 10, 4, 9}}));
+        System.out.println(minimumEffortPathBetterSol(new int[][]{{1,2,4}, {1,3,1}, {1,2,1}}));
     }
 
     private static class UnionFind {
