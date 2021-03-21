@@ -106,11 +106,51 @@ public class ArrayAndString {
         return res;
     }
 
+    public int[] productExceptSelf(int[] nums) {
+        if (nums.length == 0)
+            return new int[0];
+
+        int len = nums.length;
+        int[] rightArray = new int[len];
+        rightArray[len - 1] = 1;
+        for (int i = len - 2; i >= 0; i--) {
+            rightArray[i] = rightArray[i + 1] * nums[i + 1];
+        }
+
+        int leftRecord = 1;
+        int[] res = new int[len];
+        for (int i = 0; i < len; i++) {
+            res[i] = leftRecord * rightArray[i];
+            leftRecord *= nums[i];
+        }
+        return res;
+    }
+
+    public String addStrings(String num1, String num2) {
+        int i = num1.length() - 1, j = num2.length() - 1;
+        StringBuilder stringBuilder = new StringBuilder();
+        int add = 0;
+        int x, y, sum;
+        while (i >= 0 || j >= 0 || add != 0) {
+            x = i >= 0 ? num1.charAt(i) - '0' : 0;
+            y = j >= 0 ? num2.charAt(j) - '0' : 0;
+            sum = x + y + add;
+            stringBuilder.append(sum % 10);
+            add = sum / 10;
+            i--;
+            j--;
+        }
+        stringBuilder.reverse();
+        return stringBuilder.toString();
+    }
+
     @Test
     public void test() {
 //        System.out.println(lengthOfLongestSubstring(" "));
 //        System.out.println(findMedianSortedArrays(new int[]{2}, new int[]{}));
-        System.out.println(threeSum(new int[]{0, 0, 0}));
+//        System.out.println(threeSum(new int[]{0, 0, 0}));
+//        System.out.println(Arrays.toString(productExceptSelf(new int[]{1, 2})));
+        System.out.println(addStrings("12342", "123"));
     }
 
 
