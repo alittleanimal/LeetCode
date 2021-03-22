@@ -137,6 +137,7 @@ public class Searching {
         if (root == null)
             return "";
         StringBuilder res = seri(root, new StringBuilder());
+        assert res != null;
         res.deleteCharAt(res.length() - 1);
         return res.toString();
     }
@@ -187,18 +188,46 @@ public class Searching {
         return treeNode;
     }
 
+    // 33. 搜索旋转排序数组
+    public int search(int[] nums, int target) {
+        return binarySearch(0, nums.length - 1, target, nums);
+    }
+
+    private int binarySearch(int i, int j, int target, int[] nums) {
+        int middle = (i + j) / 2;
+        if (nums[middle] == target)
+            return middle;
+        if (i >= j)
+            return -1;
+
+        if (nums[middle] >= nums[i]) {
+            if (target < nums[middle] && target >= nums[i]) {
+                return binarySearch(i, middle - 1, target, nums);
+            } else {
+                return binarySearch(middle + 1, j, target, nums);
+            }
+        } else {
+            if (target > nums[middle] && target <= nums[j]) {
+                return binarySearch(middle + 1, j, target, nums);
+            } else {
+                return binarySearch(i, middle - 1, target, nums);
+            }
+        }
+    }
+
     @Test
     public void test() {
 //        System.out.println(permute(new int[]{1, 2, 3}));
 
-        TreeNode root = null;
+//        TreeNode root = null;
 //        root.left = new TreeNode(2);
 //        root.right = new TreeNode(3);
-////        root.right.left = null;
+//        root.right.left = null;
 //        root.right.right = new TreeNode(5);
-        System.out.println(serialize(root));
+//        System.out.println(serialize(root));
+//        System.out.println(deserialize(serialize(root)));
 
-        System.out.println(deserialize(serialize(root)));
+        System.out.println(search(new int[]{3,1}, 1));
     }
 
 }

@@ -106,6 +106,7 @@ public class ArrayAndString {
         return res;
     }
 
+    // 238. 除自身以外数组的乘积
     public int[] productExceptSelf(int[] nums) {
         if (nums.length == 0)
             return new int[0];
@@ -126,6 +127,7 @@ public class ArrayAndString {
         return res;
     }
 
+    // 415. 字符串相加
     public String addStrings(String num1, String num2) {
         int i = num1.length() - 1, j = num2.length() - 1;
         StringBuilder stringBuilder = new StringBuilder();
@@ -144,13 +146,58 @@ public class ArrayAndString {
         return stringBuilder.toString();
     }
 
+    // 1300. 转变数组后最接近目标值的数组和
+    public int findBestValue(int[] arr, int target) {
+        Arrays.sort(arr);
+        int len = arr.length;
+        int[] prefix = new int[len + 1];
+        for (int i = 1; i <= len; i++) {
+            prefix[i] = arr[i - 1] + prefix[i - 1];
+        }
+
+        int l = 0, r = arr[len - 1];
+        int ans = 0;
+        while (l <= r) {
+            int middle = (l + r) / 2;
+            int index = Arrays.binarySearch(arr, middle);
+            if (index < 0) {
+                index = -index - 1;
+            }
+
+            int sum = prefix[index] + (len - index) * middle;
+
+            if (sum == target) {
+                break;
+            }
+            if (sum < target) {
+                ans = middle;
+                l = middle + 1;
+            } else {
+                r = middle - 1;
+            }
+        }
+
+        int chooseSmall = check(arr, ans);
+        int chooseBig = check(arr, ans + 1);
+        return Math.abs(chooseSmall - target) <= Math.abs(chooseBig - target) ? ans : ans + 1;
+    }
+
+    private int check(int[] arr, int x) {
+        int ret = 0;
+        for (int num : arr) {
+            ret += Math.min(num, x);
+        }
+        return ret;
+    }
+
     @Test
     public void test() {
 //        System.out.println(lengthOfLongestSubstring(" "));
 //        System.out.println(findMedianSortedArrays(new int[]{2}, new int[]{}));
 //        System.out.println(threeSum(new int[]{0, 0, 0}));
 //        System.out.println(Arrays.toString(productExceptSelf(new int[]{1, 2})));
-        System.out.println(addStrings("12342", "123"));
+//        System.out.println(addStrings("12342", "123"));
+        System.out.println(findBestValue(new int[]{48772,52931,14253,32289,75263}, 40876));
     }
 
 
