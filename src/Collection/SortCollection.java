@@ -28,7 +28,7 @@ public class SortCollection {
     }
 
     public static void bubbleSortImprovement(int[] numbers) {
-        boolean hasChange = false;
+        boolean hasChange;
         int lastChangeIndex = numbers.length - 1;
         int arrayBoundary = numbers.length - 1;
 
@@ -99,7 +99,7 @@ public class SortCollection {
      * @param numbers
      */
     public static void selectSort(int[] numbers) {
-        int temp = 0;
+        int temp;
 
         for (int i = 0; i < numbers.length; i++) {
             int k = i;
@@ -160,6 +160,10 @@ public class SortCollection {
         printArr(numbers);
     }
 
+    /**
+     * https://blog.csdn.net/qq_36186690/article/details/82505569
+     * @param nums
+     */
     public void heapSort(int[] nums) {
         for (int i = nums.length / 2 - 1; i >= 0; i--) {
             adjustHeap(nums, i, nums.length);
