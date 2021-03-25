@@ -1,5 +1,9 @@
 package Collection;
 
+import org.junit.Test;
+
+import java.util.Arrays;
+
 public class SortCollection {
 
     /**
@@ -12,11 +16,10 @@ public class SortCollection {
      * @param numbers
      */
     public static void bubbleSort(int[] numbers) {
-        int temp = 0;
         for (int i = 0; i < numbers.length - 1; i++) {
             for (int j = 0; j < numbers.length - 1 - i; j++) {
                 if (numbers[j] > numbers[j + 1]) {
-                    temp = numbers[i];
+                    int temp = numbers[i];
                     numbers[i] = numbers[j];
                     numbers[j] = temp;
                 }
@@ -25,22 +28,23 @@ public class SortCollection {
     }
 
     public static void bubbleSortImprovement(int[] numbers) {
-        int temp = 0;
         boolean hasChange = false;
         int lastChangeIndex = numbers.length - 1;
-        int tempChangeIndex = 0;
+        int arrayBoundary = numbers.length - 1;
 
-        for (int i = 0; i < lastChangeIndex; i++) {
+        for (int i = 0; i < numbers.length - 1; i++) {
             hasChange = false;
-            for (int j = 0; j < lastChangeIndex - i; j++) {
+            for (int j = 0; j < arrayBoundary; j++) {
                 if (numbers[j] > numbers[j + 1]) {
-                    temp = numbers[i];
+                    int temp = numbers[i];
                     numbers[i] = numbers[j];
                     numbers[j] = temp;
+
                     hasChange = true;
-//                    tempChangeIndex =
+                    lastChangeIndex = j;
                 }
             }
+            arrayBoundary = lastChangeIndex;
 
             if (!hasChange)
                 break;
@@ -124,11 +128,9 @@ public class SortCollection {
      * @param numbers
      */
     public static void insertSort(int[] numbers) {
-        int temp = 0;
-        int j = 0;
-
+        int j;
         for (int i = 0; i < numbers.length; i++) {
-            temp = numbers[i];
+            int temp = numbers[i];
             for (j = i; j > 0 && temp < numbers[i - 1]; j--) {
                 numbers[j] = numbers[j - 1];
             }
@@ -137,10 +139,10 @@ public class SortCollection {
     }
 
     public static void printArr(int[] numbers) {
-        for (int i = 0; i < numbers.length; i++) {
-            System.out.print(numbers[i] + ",");
+        for (int number : numbers) {
+            System.out.print(number + ",");
         }
-        System.out.println("");
+        System.out.println();
     }
 
     public static void main(String[] args) {
@@ -156,5 +158,46 @@ public class SortCollection {
         quick(numbers);
         System.out.print("快速排序后：");
         printArr(numbers);
+    }
+
+    public void heapSort(int[] nums) {
+        for (int i = nums.length / 2 - 1; i >= 0; i--) {
+            adjustHeap(nums, i, nums.length);
+        }
+
+        for (int j = nums.length - 1; j > 0; j--) {
+            swap(nums, 0, j);
+            adjustHeap(nums, 0, j);
+        }
+        System.out.println(Arrays.toString(nums));
+    }
+
+    private void adjustHeap(int[] nums, int i, int length) {
+        int temp = nums[i];
+
+        for (int j = i * 2 + 1; j < length; j = j * 2 + 1) {
+            if (j + 1 < length && nums[j] < nums[j + 1]) {
+                j++;
+            }
+            if (nums[j] > temp) {
+                nums[i] = nums[j];
+                i = j;
+            } else {
+                break;
+            }
+        }
+        nums[i] = temp;
+    }
+
+    private void swap(int[] nums, int a, int b) {
+        int temp = nums[a];
+        nums[a] = nums[b];
+        nums[b] = temp;
+    }
+
+
+    @Test
+    public void testSort() {
+        heapSort(new int[]{7,6,7,11,5,12,3,0,1});
     }
 }
