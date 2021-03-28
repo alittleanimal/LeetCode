@@ -2,6 +2,9 @@ package HKU2021.nowcoder;
 
 import org.junit.Test;
 
+/**
+ * https://www.nowcoder.com/practice/dfa502cf6a914fb5b98c59c56619e96c?tpId=101&tqId=33111&rp=1&ru=%2Fta%2Fprogrammer-code-interview-guide&qru=%2Fta%2Fprogrammer-code-interview-guide%2Fquestion-ranking&tab=answerKey
+ */
 public class MinorEditCost {
     public static int minEditCost(String str1, String str2, int ic, int dc, int rc) {
         int len1 = str1.length();

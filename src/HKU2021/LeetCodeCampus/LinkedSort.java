@@ -40,7 +40,7 @@ public class LinkedSort {
         }
     }
 
-    public Node bubbleSortListNew(Node node) {
+    public Node insertSortList(Node node) {
         if (node == null || node.next == null) {
             return node;
         }
@@ -82,7 +82,7 @@ public class LinkedSort {
         Node node2 = new Node(9, node3);
         Node node1 = new Node(1, node2);
 
-        bubbleSortListNew(node1);
+        insertSortList(node1);
     }
 
 }
